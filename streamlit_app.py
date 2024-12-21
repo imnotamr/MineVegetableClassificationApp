@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 import requests
 import os
+import tensorflow as tf
 
 # Set up Streamlit app with custom HTML and CSS
 st.set_page_config(page_title="Vegetables Classification", layout="wide")
@@ -63,8 +64,14 @@ def load_trained_model():
                 st.error("Failed to download the model. Please check the URL.")
                 st.stop()
 
-    # Load the model
-    return load_model(model_path)
+    # Load the model in legacy mode
+    try:
+        model = load_model(model_path, compile=False)
+    except TypeError as e:
+        st.error(f"Model loading failed: {e}")
+        st.stop()
+
+    return model
 
 # Load the model
 model = load_trained_model()
