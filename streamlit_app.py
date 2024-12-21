@@ -4,6 +4,8 @@ from keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import requests
+import os
 
 # Set up Streamlit app with custom HTML and CSS
 st.set_page_config(page_title="Vegetables Classification", layout="wide")
@@ -43,6 +45,30 @@ st.markdown("""
 st.markdown('<div class="title"> Welcome to Vegetable Classification App </div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Upload an image of a vegetable to find out what it is!</div>', unsafe_allow_html=True)
 
+# Function to load the trained model dynamically
+@st.cache_resource
+def load_trained_model():
+    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_amr.h5"
+    model_path = "Vegetable_model_amr.h5"
+
+    # Check if the model file exists locally; if not, download it
+    if not os.path.exists(model_path):
+        st.info("Downloading the model file...")
+        with open(model_path, "wb") as f:
+            response = requests.get(model_url)
+            if response.status_code == 200:
+                f.write(response.content)
+                st.success("Model downloaded successfully!")
+            else:
+                st.error("Failed to download the model. Please check the URL.")
+                st.stop()
+
+    # Load the model
+    return load_model(model_path)
+
+# Load the model
+model = load_trained_model()
+
 # Create a section for uploading images
 with st.container():
     st.markdown('<div class="upload-section">', unsafe_allow_html=True)
@@ -53,15 +79,6 @@ with st.container():
     if uploaded_file is not None:
         # Display uploaded image
         st.image(uploaded_file, caption="Uploaded Image", use_container_width=True, output_format="auto")
-
-        # Load the trained model
-        @st.cache_resource
-        def load_trained_model():
-            model_path = r"C:\Users\user\Downloads\Vegetable_model_amr.h5"  # Path to the saved model
-            model = load_model(model_path)
-            return model
-
-        model = load_trained_model()
 
         # Class Labels
         class_labels = [
