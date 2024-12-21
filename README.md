@@ -24,7 +24,7 @@ A simple Streamlit app template for you to modify!
 The trained model for the **Vegetable Classification App** is available for download! 🎉
 
 ### **Download the Model**
-[Click here to download the model file (Vegetable_model_amr.h5)](https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_amr.h5)
+[Click here to download the model file (Vegetable_model_amr.h5)]([https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_amr.h5](https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_last.h5))
 
 ### **Usage Instructions**
 1. Download the model file from the link above.
