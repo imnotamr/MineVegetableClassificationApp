@@ -15,7 +15,7 @@ st.set_page_config(page_title="Vegetables Classification", layout="wide")
 st.markdown("""
     <style>
     body {
-        background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/ep_naturalblack.png');  /* Replace this with your desired image URL */
+        background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/ep_naturalblack.png'); 
         background-size: cover;
     }
     .title {
@@ -49,8 +49,8 @@ st.markdown('<div class="subtitle">Upload an image of a vegetable to find out wh
 # Function to load the trained model dynamically
 @st.cache_resource
 def load_trained_model():
-    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_amr.h5"
-    model_path = "Vegetable_model_amr.h5"
+    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_last.h5"
+    model_path = "Vegetable_model_last.h5"
 
     # Check if the model file exists locally; if not, download it
     if not os.path.exists(model_path):
@@ -64,7 +64,7 @@ def load_trained_model():
                 st.error("Failed to download the model. Please check the URL.")
                 st.stop()
 
-    # Load the model in legacy mode
+    # Load the model
     try:
         model = load_model(model_path, compile=False)
     except TypeError as e:
