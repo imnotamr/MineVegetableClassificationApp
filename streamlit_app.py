@@ -78,25 +78,6 @@ def load_trained_model():
 # Load the model
 model = load_trained_model()
 
-# Vegetable info dictionary
-vegetable_info = {
-    'Bean': 'Beans are rich in protein and fiber.',
-    'Bitter_Gourd': 'Bitter gourds are known for their medicinal properties.',
-    'Bottle_Gourd': 'Bottle gourds are low in calories and rich in nutrients.',
-    'Brinjal': 'Brinjals are high in antioxidants.',
-    'Broccoli': 'Broccoli is packed with vitamins and minerals.',
-    'Cabbage': 'Cabbages are a great source of dietary fiber.',
-    'Capsicum': 'Capsicums are rich in Vitamin C.',
-    'Carrot': 'Carrots are excellent for improving vision and skin health.',
-    'Cauliflower': 'Cauliflowers are low in carbs and high in fiber.',
-    'Cucumber': 'Cucumbers help in hydration and skin health.',
-    'Papaya': 'Papayas aid digestion and boost immunity.',
-    'Potato': 'Potatoes are versatile and rich in potassium.',
-    'Pumpkin': 'Pumpkins are a great source of beta-carotene.',
-    'Radish': 'Radishes are excellent for detoxifying the body.',
-    'Tomato': 'Tomatoes are rich in Vitamin C and antioxidants.'
-}
-
 # Create a section for uploading images
 with st.container():
     st.markdown('<div class="upload-section">', unsafe_allow_html=True)
@@ -109,7 +90,11 @@ with st.container():
         st.image(uploaded_file, caption="Uploaded Image", use_container_width=True, output_format="auto")
 
         # Class Labels
-        class_labels = list(vegetable_info.keys())
+        class_labels = [
+            'Bean', 'Bitter_Gourd', 'Bottle_Gourd', 'Brinjal', 'Broccoli',
+            'Cabbage', 'Capsicum', 'Carrot', 'Cauliflower', 'Cucumber',
+            'Papaya', 'Potato', 'Pumpkin', 'Radish', 'Tomato'
+        ]
 
         # Preprocess the uploaded image
         img = load_img(uploaded_file, target_size=(150, 150))  # Resize to match the input shape of the model
@@ -123,24 +108,30 @@ with st.container():
         # Display the predicted class
         st.markdown(f'<div class="prediction-text">Predicted Vegetable: {predicted_class}</div>', unsafe_allow_html=True)
 
-        # Add vegetable info
-        st.markdown(f"**Did You Know?** {vegetable_info.get(predicted_class, 'Information coming soon!')}")
-
-        # Display confidence scores as a table
+        # Display confidence scores as a horizontal bar chart
         confidence_df = pd.DataFrame({
             'Class': class_labels,
             'Confidence': predictions[0]
-        }).sort_values(by='Confidence', ascending=False)
-        st.write("Confidence Scores (Top 3):")
-        st.dataframe(confidence_df.head(3))
+        }).sort_values(by='Confidence', ascending=True)
 
-        # Add a download button for confidence scores
-        st.download_button(
-            label="Download Predictions as CSV",
-            data=confidence_df.to_csv(index=False),
-            file_name="predictions.csv",
-            mime="text/csv"
+        fig = px.bar(
+            confidence_df,
+            x='Confidence',
+            y='Class',
+            orientation='h',
+            title="Confidence Scores for Each Class",
+            labels={'Confidence': 'Confidence (%)', 'Class': 'Vegetable Class'},
+            text=confidence_df['Confidence'].apply(lambda x: f'{x:.2%}')
         )
+        fig.update_traces(marker_color='#2E86C1', textposition='outside')
+        fig.update_layout(
+            xaxis_title="Confidence (%)",
+            yaxis_title="Vegetable Class",
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            title_x=0.5
+        )
+        st.plotly_chart(fig, use_container_width=True)
     else:
         st.markdown('<div class="subtitle">Please upload an image to start classifying.</div>', unsafe_allow_html=True)
 
