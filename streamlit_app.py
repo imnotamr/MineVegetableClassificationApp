@@ -139,6 +139,62 @@ if uploaded_file is not None:
     )
     st.plotly_chart(fig, use_container_width=True)
 
+# Add a section for camera input
+st.markdown('<div class="subtitle">Or use your camera to capture a vegetable image:</div>', unsafe_allow_html=True)
+
+# Camera input widget
+camera_image = st.camera_input("Take a picture")
+
+if camera_image is not None:
+    st.image(camera_image, caption="Captured Image", use_container_width=True)
+
+    # Class Labels
+    class_labels = [
+        'Bean', 'Bitter_Gourd', 'Bottle_Gourd', 'Brinjal', 'Broccoli',
+        'Cabbage', 'Capsicum', 'Carrot', 'Cauliflower', 'Cucumber',
+        'Papaya', 'Potato', 'Pumpkin', 'Radish', 'Tomato'
+    ]
+
+    # Preprocess the captured image
+    img = load_img(camera_image, target_size=(150, 150))  # Resize to match model input
+    img_array = img_to_array(img) / 255.0  # Normalize the image
+    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+
+    # Make a prediction
+    predictions = model.predict(img_array)
+    predicted_class = class_labels[np.argmax(predictions)]
+
+    # Save prediction to session state
+    st.session_state.prediction_history.append(predicted_class)
+
+    # Display the predicted class
+    st.markdown(f'<div class="prediction-text">Predicted Vegetable: {predicted_class}</div>', unsafe_allow_html=True)
+
+    # Display confidence scores
+    confidence_df = pd.DataFrame({
+        'Class': class_labels,
+        'Confidence': predictions[0]
+    }).sort_values(by='Confidence', ascending=True)
+
+    fig = px.bar(
+        confidence_df,
+        x='Confidence',
+        y='Class',
+        orientation='h',
+        title="Confidence Scores for Each Class",
+        labels={'Confidence': 'Confidence (%)', 'Class': 'Vegetable Class'},
+        text=confidence_df['Confidence'].apply(lambda x: f'{x:.2%}')
+    )
+    fig.update_traces(marker_color='#2E86C1', textposition='outside')
+    fig.update_layout(
+        xaxis_title="Confidence (%)",
+        yaxis_title="Vegetable Class",
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        title_x=0.5
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
 # Display prediction history
 if st.session_state.prediction_history:
     st.markdown('<div class="subtitle">Prediction History:</div>', unsafe_allow_html=True)
