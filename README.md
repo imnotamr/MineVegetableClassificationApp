@@ -1,5 +1,6 @@
 # 🌱 Vegetable Classification App
 This project features a Vegetable Classification App, built using a state-of-the-art Convolutional Neural Network (CNN). The app allows users to upload images of vegetables and receive accurate classifications, along with confidence scores for each category.
+Check out the [Vegetable Classification App](https://github.com/imnotamr/Vegetable-Classification-App) on GitHub!
 
 # 🚀 Features
 ### 🖼️ Image Upload:
@@ -34,10 +35,7 @@ The app uses the pre-trained CNN to classify the vegetable.
 ## Display Results:
 Predicted vegetable name and Confidence scores for all 15 classes, displayed as a bar chart.
 ### Supported Vegetable Classes:
-• Bean
-• Bitter_Gourd
-•Bottle_Gourd
-Brinjal, Broccoli, Cabbage, Capsicum, Carrot, Cauliflower, Cucumber, Papaya, Potato, Pumpkin, Radish, Tomato
+Bean, Bitter_Gourd, Bottle_Gourd, Brinjal, Broccoli, Cabbage, Capsicum, Carrot, Cauliflower, Cucumber, Papaya, Potato, Pumpkin, Radish, Tomato
 
 # 🔗 Deployment
 Using Streamlit Cloud
