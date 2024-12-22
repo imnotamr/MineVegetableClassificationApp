@@ -8,7 +8,7 @@ import requests
 import os
 import tensorflow as tf
 
-# Set up Streamlit app with custom HTML and CSS
+# Set up Streamlit app with custom HTML and CSS :)
 st.set_page_config(page_title="Vegetables Classification", layout="wide")
 
 # Custom CSS for styling (Background image and text styles)
