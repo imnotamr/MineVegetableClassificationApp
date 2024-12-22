@@ -82,8 +82,8 @@ model = load_trained_model()
 with st.container():
     st.markdown('<div class="upload-section">', unsafe_allow_html=True)
 
-    # File uploader widget
-    uploaded_file = st.file_uploader("Choose a vegetable image...", type=["jpg", "png", "jpeg"])
+    # File uploader widget with drag-and-drop functionality
+    uploaded_file = st.file_uploader("Choose a vegetable image...", type=["jpg", "png", "jpeg"], accept_multiple_files=False, help="Drag and drop your image here or click to upload.")
 
     if uploaded_file is not None:
         # Display uploaded image
@@ -132,6 +132,24 @@ with st.container():
             title_x=0.5
         )
         st.plotly_chart(fig, use_container_width=True)
+
+        # Add feature: Pie Chart of Confidence Scores
+        pie_chart_fig = px.pie(
+            confidence_df,
+            values='Confidence',
+            names='Class',
+            title='Confidence Distribution for Predicted Classes',
+            labels={'Class': 'Vegetable Class', 'Confidence': 'Confidence (%)'}
+        )
+        pie_chart_fig.update_traces(textinfo='percent+label')
+        st.plotly_chart(pie_chart_fig, use_container_width=True)
+
+        # Add feature: Display CNN Architecture Summary
+        st.markdown("### CNN Model Architecture")
+        model_summary = []
+        model.summary(print_fn=lambda x: model_summary.append(x))
+        st.text("\n".join(model_summary))
+
     else:
         st.markdown('<div class="subtitle">Please upload an image to start classifying.</div>', unsafe_allow_html=True)
 
