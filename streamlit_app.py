@@ -8,7 +8,7 @@ import requests
 import os
 import tensorflow as tf
 
-# Set up Streamlit app with custom HTML and CSS :)
+# Set up Streamlit app with custom HTML and CSS
 st.set_page_config(page_title="Vegetables Classification", layout="wide")
 
 # Custom CSS for styling (Background image and text styles)
@@ -51,8 +51,8 @@ st.markdown('<div class="subtitle">Upload an image of a vegetable to find out wh
 def load_trained_model():
     st.write(f"TensorFlow Version: {tf.__version__}")
 
-    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_newcompatible.h5"
-    model_path = "Vegetable_model_newcompatible.h5"
+    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_tf213_compatible.h5"
+    model_path = "Vegetable_model_tf213_compatible.h5"
 
     # Check if the model file exists locally; if not, download it
     if not os.path.exists(model_path):
