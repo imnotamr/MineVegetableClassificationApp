@@ -49,8 +49,6 @@ st.markdown('<div class="subtitle">Upload an image of a vegetable to find out wh
 # Function to load the trained model dynamically
 @st.cache_resource
 def load_trained_model():
-    st.write(f"TensorFlow Version: {tf.__version__}")
-
     model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_fully_compatible.h5"
     model_path = "Vegetable_model_fully_compatible.h5"
 
