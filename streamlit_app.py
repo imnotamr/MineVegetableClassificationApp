@@ -49,8 +49,8 @@ st.markdown('<div class="subtitle">Upload an image of a vegetable to find out wh
 # Function to load the trained model dynamically
 @st.cache_resource
 def load_trained_model():
-    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_last.h5"
-    model_path = "Vegetable_model_last.h5"
+    model_url = "https://github.com/imnotamr/Vegetable-Classification-App/releases/download/v1.0/Vegetable_model_anotheramragain.h5"
+    model_path = "Vegetable_model_anotheramragain.h5"
 
     # Check if the model file exists locally; if not, download it
     if not os.path.exists(model_path):
@@ -67,7 +67,7 @@ def load_trained_model():
     # Load the model
     try:
         model = load_model(model_path, compile=False)
-    except TypeError as e:
+    except Exception as e:
         st.error(f"Model loading failed: {e}")
         st.stop()
 
