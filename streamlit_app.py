@@ -13,40 +13,6 @@ from keras.models import Model
 # Set up Streamlit app with page config
 st.set_page_config(page_title="Vegetables Classification", layout="wide")
 
-# Add Dark Mode Toggle
-dark_mode = st.sidebar.checkbox("Enable Dark Mode")
-
-if dark_mode:
-    st.markdown("""
-        <style>
-        body {
-            background-color: #0e1117;
-            color: #e5e5e5;
-        }
-        .title {
-            color: #79c0ff;
-        }
-        .subtitle, .footer {
-            color: #58a6ff;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-else:
-    st.markdown("""
-        <style>
-        body {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .title {
-            color: #00008B;
-        }
-        .subtitle, .footer {
-            color: #1E90FF;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
 # Title and subtitle
 st.markdown('<div class="title"> Welcome to Vegetable Classification App </div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Upload an image of a vegetable to find out what it is!</div>', unsafe_allow_html=True)
@@ -73,7 +39,7 @@ model = load_trained_model()
 # Upload Section
 uploaded_file = st.file_uploader("Choose a vegetable image...", type=["jpg", "png", "jpeg"])
 if uploaded_file:
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
     # Class Labels
     class_labels = [
