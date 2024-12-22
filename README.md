@@ -1,6 +1,6 @@
 # 🌱 Vegetable Classification App
 This project features a Vegetable Classification App, built using a state-of-the-art Convolutional Neural Network (CNN). The app allows users to upload images of vegetables and receive accurate classifications, along with confidence scores for each category.
-Check out the App ---> [Vegetable Classification App](https://blank-app-tvutcovnwoe.streamlit.app/) 
+Check out the App ---> [Vegetable Classification App](https://vegetableclassificationfehu.streamlit.app/) 
 
 # 🚀 Features
 ### 🖼️ Image Upload:
