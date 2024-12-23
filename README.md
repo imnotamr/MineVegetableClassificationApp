@@ -15,17 +15,15 @@ Easy-to-use interface accessible via a web browser.
 ### 📂 Project Structure
 Vegetable-Classification-App/
 
-├── streamlit_app.py          # Streamlit app code
+├── streamlit_app.py          
 
-├── requirements.txt          # Required Python packages
-
+├── requirements.txt          
 ├── model/
 
-│   └── Vegetable_model_last.h5  # Trained Keras model file
+│   └── Vegetable_model_last.h5  
+├── README.md                 
 
-├── README.md                 # Project documentation (this file)
-
-└── assets/                   # Images or additional assets (optional)
+└── assets/                   
 
 #  How It Works
 ## Upload an Image:
