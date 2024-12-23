@@ -3,7 +3,7 @@ This project features a Vegetable Classification App, built using a state-of-the
 Check out the App ---> [Vegetable Classification App](https://vegetableclassificationfehu.streamlit.app/) 
 
 #  Features
-### 🖼 Image Upload:
+###  Image Upload:
 Upload vegetable images (JPG, PNG, or JPEG formats).
 ###  Deep Learning Model:
 Utilizes a CNN trained on 15 vegetable classes for high accuracy.
