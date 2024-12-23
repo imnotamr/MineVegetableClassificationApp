@@ -1,15 +1,15 @@
-# 🌱 Vegetable Classification App
+#  Vegetable Classification App
 This project features a Vegetable Classification App, built using a state-of-the-art Convolutional Neural Network (CNN). The app allows users to upload images of vegetables and receive accurate classifications, along with confidence scores for each category.
 Check out the App ---> [Vegetable Classification App](https://vegetableclassificationfehu.streamlit.app/) 
 
-# 🚀 Features
-### 🖼️ Image Upload:
+#  Features
+### 🖼 Image Upload:
 Upload vegetable images (JPG, PNG, or JPEG formats).
-### 🧠 Deep Learning Model:
+###  Deep Learning Model:
 Utilizes a CNN trained on 15 vegetable classes for high accuracy.
-### 📊 Confidence Scores:
+###  Confidence Scores:
 Visualizes classification probabilities with a bar chart.
-### 🌐 Streamlit Deployment:
+###  Streamlit Deployment:
 Easy-to-use interface accessible via a web browser.
 
 ### 📂 Project Structure
@@ -27,7 +27,7 @@ Vegetable-Classification-App/
 
 └── assets/                   # Images or additional assets (optional)
 
-# 🌟 How It Works
+#  How It Works
 ## Upload an Image:
 Users upload a vegetable image in JPG/PNG format.
 ## Model Prediction:
@@ -37,12 +37,12 @@ Predicted vegetable name and Confidence scores for all 15 classes, displayed as 
 ### Supported Vegetable Classes:
 Bean, Bitter_Gourd, Bottle_Gourd, Brinjal, Broccoli, Cabbage, Capsicum, Carrot, Cauliflower, Cucumber, Papaya, Potato, Pumpkin, Radish, Tomato
 
-# 🔗 Deployment
+#  Deployment
 Using Streamlit Cloud
 The app is deployed via Streamlit Cloud for easy access. Check it out here:
 Vegetable Classification App
 
-# 📊 Model Details
+#  Model Details
 ### Framework:
 TensorFlow/Keras
 ### Model Type:
@@ -54,17 +54,17 @@ High-resolution vegetable images
 ### Output Layer:
 Softmax for multi-class classification
 
-# 🤝 Contributing
+#  Contributing
 Contributions are welcome! If you’d like to improve the model, app interface, or documentation:
 1. Fork the repository.
 2. Create a feature branch.
 3. Submit a pull request.
 
    
-# 🛡️ License
+#  License
 This project is licensed under the MIT License. Feel free to use and modify the code as needed.
 
-# ✨ Acknowledgments
+#  Acknowledgments
 ## Team Members:
 Amr Ahmed, Mohamed Yasser, Omar Khaled, Ibrahim Mahmoud.
 ## Frameworks:
@@ -72,8 +72,8 @@ TensorFlow, Keras, Streamlit.
 ## Special Thanks:
 Open-source communities for making this possible.
 
-# 📧 Contact
+# Contact
 If you have any questions or suggestions, feel free to reach out:
 ## Email: amrahmedll201@gmail.com
 ## GitHub: @imnotamr
-### 🌟 Don’t forget to ⭐ star the repository if you find it useful!
+### 🌟 Don’t forget to star the repository if you find it useful!
