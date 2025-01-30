@@ -57,7 +57,7 @@ st.markdown('<div class="subtitle">Upload an image of a vegetable to find out wh
 # Function to load the trained model dynamically
 @st.cache_resource
 def load_trained_model():
-    model_url = "https://github.com/imnotamr/VegetableClassificationAppFEHU/releases/download/v2.0"
+    model_url = "https://github.com/imnotamr/VegetableClassificationAppFEHU/releases/download/v2.0/Vegetable_model_fully_compatible.h5"
     model_path = "Vegetable_model_fully_compatible.h5"
 
     if not os.path.exists(model_path):
@@ -202,4 +202,4 @@ if st.session_state.prediction_history:
         st.markdown(f'<div class="prediction-history">{i}. {pred}</div>', unsafe_allow_html=True)
 
 # Footer
-st.markdown('<div class="footer">Vegetable Classifier App | By Amr Ahmed, Mohamed Yasser, Omar Khaled, Ibrahim Mahmoud </div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">Vegetable Classifier App | By Amr Ahmed </div>', unsafe_allow_html=True)
